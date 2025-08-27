@@ -6,12 +6,13 @@ flush(serialObj); % Clear serial data
 
 % Collect i number of data points
 for i = 1:100
-data(i) = readline(serialObj) % Read arduino serial data
+    data(i) = readline(serialObj); % Read arduino serial data
+    x(i) = i;
 end
 
-%%
-data_Num = str2double(data) % Convert from string to double
+data_Num = str2double(data); % Convert from string to double
 
-x = 1:100;
-
-plot(x, data_Num)
+plot(x, data_Num) % Plot of force data
+title('Load Cell Data')
+xlabel('Sample Number')
+ylabel('Force [N]')
