@@ -1,3 +1,5 @@
+  float Time_Zero = millis();
+
 #include <HX711_ADC.h> // Library for hx711 board
 #if defined(ESP8266)|| defined(ESP32) || defined(AVR)
 #include <EEPROM.h>
@@ -35,7 +37,8 @@ void loop() {
     if (millis() > t + serialPrintInterval) {
     float force = LoadCell.getData(); // Force in Newtons
     Serial.println(force);
-    //Serial.print(",");
+    Serial.print(",");
+    Serial.println((millis() - Time_Zero) / 1000);
 
     newDataReady = 0;
     t = millis(); 
